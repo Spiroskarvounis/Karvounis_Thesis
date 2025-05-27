@@ -18,10 +18,10 @@ df = pd.read_csv("C:\\Users\karvs\Downloads\sundance-data-release\SunDance_data_
 df.rename(columns={'Date & Time': 'timestamp'}, inplace=True)
 
 
-# #
-# # 👉 Βήμα 2: Γρήγορη ματιά στα δεδομένα
-# print("📌 Πρώτες 5 γραμμές:")
-# print(df.head())
+#
+# 👉 Βήμα 2: Γρήγορη ματιά στα δεδομένα
+print("📌 Πρώτες 5 γραμμές:")
+print(df.head())
 #
 # print("\n📌 Τύποι δεδομένων:")
 # print(df.dtypes)
@@ -40,14 +40,13 @@ df.rename(columns={'Date & Time': 'timestamp'}, inplace=True)
 # df.set_index('timestamp', inplace=True)
 # df = df.sort_index()
 # #
-# # Plot ηλιακής παραγωγής (αν υπάρχει η στήλη)
-# if 'Solar+Wind [kW]' in df.columns:
-#     plt.figure(figsize=(14, 5))
-#     df['Solar+Wind [kW]'].plot()
-#     plt.title("Ηλιακή Παραγωγή στο Χρόνο")
-#     plt.xlabel("Ημερομηνία")
-#     plt.ylabel("kWh")
-#     plt.grid(True)
-#     plt.show()
+# Plot ηλιακής παραγωγής (αν υπάρχει η στήλη)
+if 'use [kW]' in df.columns:
+    plt.figure(figsize=(14, 5))
+    df['use [kW]'].plot()
+    plt.title("Ηλιακή Παραγωγή στο Χρόνο")
+    plt.xlabel("Ημερομηνία")
+    plt.ylabel("kWh")
+    plt.grid(True)
+    plt.show()
 
-df['gen [kW]'].plot(figsize=(14,5), title='Ηλιακή Παραγωγή στο Χρόνο')
