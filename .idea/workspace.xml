@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5d7803c3-4e65-4a04-8326-65e3d4116384" name="Changes" comment="XGBoost, Random Forest">
-      <change afterPath="$PROJECT_DIR$/CNN_LSTM_XGBoost.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/LSTM_Random_Forest.py" afterDir="false" />
+    <list default="true" id="5d7803c3-4e65-4a04-8326-65e3d4116384" name="Changes" comment="last hybrid models">
+      <change afterPath="$PROJECT_DIR$/ARIMA.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NWP_XGBoost.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -47,10 +47,13 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Python.ARIMA.executor": "Run",
     "Python.CNN_LSTM.executor": "Run",
     "Python.CNN_LSTM_XGBoost.executor": "Run",
     "Python.LSTM.executor": "Run",
     "Python.LSTM_Random_Forest.executor": "Run",
+    "Python.LSTM_XGBoost.executor": "Run",
+    "Python.NWP_XGBoost.executor": "Run",
     "Python.Preprocess_data.executor": "Run",
     "Python.Preprocess_weather.executor": "Run",
     "Python.Random_Forest.executor": "Run",
@@ -102,7 +105,10 @@
       <workItem from="1748368916929" duration="5898000" />
       <workItem from="1748447692024" duration="3535000" />
       <workItem from="1748451317609" duration="5099000" />
-      <workItem from="1748620860284" duration="2484000" />
+      <workItem from="1748620860284" duration="3195000" />
+      <workItem from="1748766382010" duration="3730000" />
+      <workItem from="1748891572920" duration="1271000" />
+      <workItem from="1748974340706" duration="2628000" />
     </task>
     <task id="LOCAL-00001" summary="first_plots">
       <option name="closed" value="true" />
@@ -136,7 +142,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748458814176</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="last hybrid models">
+      <option name="closed" value="true" />
+      <created>1748624388993</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1748624388993</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -158,19 +172,23 @@
     <MESSAGE value="merged_plots" />
     <MESSAGE value="feature_engineering, LSTM, CNN-LSTM" />
     <MESSAGE value="XGBoost, Random Forest" />
-    <option name="LAST_COMMIT_MESSAGE" value="XGBoost, Random Forest" />
+    <MESSAGE value="last hybrid models" />
+    <option name="LAST_COMMIT_MESSAGE" value="last hybrid models" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Karvounis_Thesis$Preprocess_data.coverage" NAME="Preprocess_data Coverage Results" MODIFIED="1748372214307" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Karvounis_Thesis$LSTM_XGBoost.coverage" NAME="LSTM_XGBoost Coverage Results" MODIFIED="1748623779739" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Karvounis_Thesis$visualize_merged_data.coverage" NAME="visualize_merged_data Coverage Results" MODIFIED="1748376167699" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Karvounis_Thesis$ARIMA.coverage" NAME="ARIMA Coverage Results" MODIFIED="1748976474470" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Karvounis_Thesis$Random_Forest.coverage" NAME="Random_Forest Coverage Results" MODIFIED="1748458190352" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Karvounis_Thesis$CNN_LSTM_XGBoost.coverage" NAME="CNN_LSTM_XGBoost Coverage Results" MODIFIED="1748622875199" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Karvounis_Thesis$feature_engineering.coverage" NAME="feature_engineering Coverage Results" MODIFIED="1748448296559" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Karvounis_Thesis$merge_weather_energy.coverage" NAME="merge_weather_energy Coverage Results" MODIFIED="1748376159959" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Karvounis_Thesis$LSTM_Random_Forest.coverage" NAME="LSTM_Random_Forest Coverage Results" MODIFIED="1748623582943" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Karvounis_Thesis$CNN_LSTM.coverage" NAME="CNN_LSTM Coverage Results" MODIFIED="1748457298599" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Karvounis_Thesis$NWP_XGBoost.coverage" NAME="NWP_XGBoost Coverage Results" MODIFIED="1748975762552" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Karvounis_Thesis$LSTM.coverage" NAME="LSTM Coverage Results" MODIFIED="1748455424885" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Karvounis_Thesis$XGBoost.coverage" NAME="XGBoost Coverage Results" MODIFIED="1748457973482" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Karvounis_Thesis$XGBoost.coverage" NAME="XGBoost Coverage Results" MODIFIED="1748975640711" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Karvounis_Thesis$Weather_plots.coverage" NAME="Weather_plots Coverage Results" MODIFIED="1748118383836" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Karvounis_Thesis$Preprocess_weather.coverage" NAME="Preprocess_weather Coverage Results" MODIFIED="1748372233437" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
