@@ -3,7 +3,7 @@ import numpy as np
 from sklearn.preprocessing import MinMaxScaler
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import LSTM, Dense
-from sklearn.metrics import mean_squared_error
+from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
 import matplotlib.pyplot as plt
 
 # === 1. Φόρτωση Δεδομένων ===
@@ -57,7 +57,12 @@ y_test_inv = scaler_y.inverse_transform(y_test)
 
 # === 10. Αξιολόγηση ===
 rmse = np.sqrt(mean_squared_error(y_test_inv, y_pred_inv))
-print(f"✅ RMSE: {rmse:.2f}")
+mae = mean_absolute_error(y_test_inv, y_pred_inv)
+r2 = r2_score(y_test_inv, y_pred_inv)
+print(f"✅ LSTM RMSE: {rmse:.2f}")
+print(f"✅ MAE: {mae:.2f}")
+print(f"✅ R² Score: {r2:.4f}")
+
 
 # === 11. Plot predicted vs actual ===
 plt.figure(figsize=(12, 4))

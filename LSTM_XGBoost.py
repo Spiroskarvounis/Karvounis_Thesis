@@ -1,88 +1,85 @@
-import pandas as pd
 import numpy as np
+import pandas as pd
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
-from sklearn.model_selection import train_test_split
-from tensorflow.keras import Input, Model
+from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import LSTM, Dense
-from xgboost import XGBRegressor
+import xgboost as xgb
 import matplotlib.pyplot as plt
 
-# === 1. Φόρτωση enriched dataset ===
+# === 1. Load dataset ===
 df = pd.read_csv("merged_SunDance_1007_features.csv", parse_dates=["timestamp"])
 df.set_index("timestamp", inplace=True)
 df['target'] = df['generation'].shift(-1)
 df.dropna(inplace=True)
 
-# === 2. Επιλογή αριθμητικών χαρακτηριστικών ===
+# === 2. Select features and labels ===
 X_raw = df.select_dtypes(include=[np.number]).drop(columns=['target'])
-y = df['target']
+y_raw = df['target']
 
-# Κανονικοποίηση
+# === 3. Train-test split BEFORE scaling ===
+TIME_STEPS = 24
+split = int(len(df) * 0.8)
+
+X_train_raw = X_raw.iloc[:split + TIME_STEPS]
+X_test_raw = X_raw.iloc[split + TIME_STEPS:]
+y_train_raw = y_raw.iloc[:split + TIME_STEPS]
+y_test_raw = y_raw.iloc[split + TIME_STEPS:]
+
+# === 4. Scale separately ===
 scaler_X = MinMaxScaler()
-X_scaled = scaler_X.fit_transform(X_raw)
+X_train = scaler_X.fit_transform(X_train_raw)
+X_test = scaler_X.transform(X_test_raw)
 
 scaler_y = MinMaxScaler()
-y_scaled = scaler_y.fit_transform(y.values.reshape(-1, 1))
+y_train = scaler_y.fit_transform(y_train_raw.values.reshape(-1, 1))
+y_test = scaler_y.transform(y_test_raw.values.reshape(-1, 1))
 
-# === 3. Δημιουργία ακολουθιών ===
+# === 5. Sequence creation ===
 def create_sequences(X, y, time_steps=24):
     Xs, ys = [], []
-    for i in range(len(X) - time_steps):
-        Xs.append(X[i:i + time_steps])
-        ys.append(y[i + time_steps])
+    for i in range(time_steps, len(X)):
+        Xs.append(X[i-time_steps:i])
+        ys.append(y[i])
     return np.array(Xs), np.array(ys)
 
-TIME_STEPS = 24
-X_seq, y_seq = create_sequences(X_scaled, y_scaled, TIME_STEPS)
+X_train_seq, y_train_seq = create_sequences(X_train, y_train, TIME_STEPS)
+X_test_seq, y_test_seq = create_sequences(X_test, y_test, TIME_STEPS)
 
-# === 4. Train-test split ===
-split = int(len(X_seq) * 0.8)
-X_train, X_test = X_seq[:split], X_seq[split:]
-y_train, y_test = y_seq[:split], y_seq[split:]
-
-# === 5. LSTM για feature extraction ===
-inputs = Input(shape=(TIME_STEPS, X_train.shape[2]))
-x = LSTM(64, activation='relu')(inputs)
-features = Dense(16, activation='relu')(x)
-output = Dense(1)(features)
-
-model = Model(inputs=inputs, outputs=output)
+# === 6. LSTM Model ===
+model = Sequential()
+model.add(LSTM(64, activation='relu', input_shape=(X_train_seq.shape[1], X_train_seq.shape[2])))
+model.add(Dense(1))
 model.compile(optimizer='adam', loss='mse')
+model.fit(X_train_seq, y_train_seq, epochs=10, batch_size=32, validation_split=0.1, verbose=1)
 
-# === 6. Εκπαίδευση LSTM ===
-model.fit(X_train, y_train, epochs=10, batch_size=32, validation_split=0.1)
+# === 7. Extract LSTM features and train XGBoost ===
+lstm_train_features = model.predict(X_train_seq)
+lstm_test_features = model.predict(X_test_seq)
 
-# === 7. Εξαγωγή features ===
-feature_extractor = Model(inputs=inputs, outputs=features)
-X_train_feat = feature_extractor.predict(X_train)
-X_test_feat = feature_extractor.predict(X_test)
+xgb_model = xgb.XGBRegressor(n_estimators=100, max_depth=3)
+xgb_model.fit(lstm_train_features, y_train_seq)
+y_pred_scaled = xgb_model.predict(lstm_test_features)
 
-# === 8. XGBoost Regressor ===
-xgb_model = XGBRegressor(n_estimators=100, max_depth=5, learning_rate=0.1)
-xgb_model.fit(X_train_feat, y_train)
+# === 8. Invert scaling for evaluation ===
+y_pred = scaler_y.inverse_transform(y_pred_scaled.reshape(-1, 1))
+y_true = scaler_y.inverse_transform(y_test_seq)
 
-# === 9. Πρόβλεψη & αξιολόγηση ===
-y_pred = xgb_model.predict(X_test_feat)
-y_pred_inv = scaler_y.inverse_transform(y_pred.reshape(-1, 1))
-y_test_inv = scaler_y.inverse_transform(y_test.reshape(-1, 1))
-
-rmse = np.sqrt(mean_squared_error(y_test_inv, y_pred_inv))
-mae = mean_absolute_error(y_test_inv, y_pred_inv)
-r2 = r2_score(y_test_inv, y_pred_inv)
-
-print(f"✅ Hybrid LSTM → XGBoost RMSE: {rmse:.2f}")
+# === 9. Metrics ===
+rmse = np.sqrt(mean_squared_error(y_true, y_pred))
+mae = mean_absolute_error(y_true, y_pred)
+r2 = r2_score(y_true, y_pred)
+print(f"✅ LSTM → XGBoost RMSE: {rmse:.2f}")
 print(f"✅ MAE: {mae:.2f}")
 print(f"✅ R² Score: {r2:.4f}")
 
-# === 10. Οπτικοποίηση ===
+# === 10. Plot ===
 plt.figure(figsize=(12, 4))
-plt.plot(y_test_inv[:200], label='Actual')
-plt.plot(y_pred_inv[:200], label='Predicted')
-plt.title("Hybrid DeepTree (LSTM → XGBoost)")
-plt.xlabel("Samples")
-plt.ylabel("Solar Generation [kW]")
+plt.plot(y_true[:200], label='Actual')
+plt.plot(y_pred[:200], label='Predicted')
+plt.title("LSTM → XGBoost Forecasting")
+plt.xlabel("Time steps")
+plt.ylabel("Solar Generation (kW)")
 plt.legend()
-plt.grid(True)
 plt.tight_layout()
 plt.show()

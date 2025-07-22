@@ -4,11 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5d7803c3-4e65-4a04-8326-65e3d4116384" name="Changes" comment="finished with models">
-      <change afterPath="$PROJECT_DIR$/Attention_LSTM.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Attention_based_XGBoost.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Transformer_based.py" afterDir="false" />
+    <list default="true" id="5d7803c3-4e65-4a04-8326-65e3d4116384" name="Changes" comment="my models">
+      <change afterPath="$PROJECT_DIR$/CNN_BiLSTM_Attention.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CNN_GradientBoostingRegressor.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CNN_Transformer_XGBoost.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WaveletTransform_LSTM_XGBoost.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/XGBoost_Random_Forest_LightGBM.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Attention_LSTM.py" beforeDir="false" afterPath="$PROJECT_DIR$/Attention_LSTM.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Attention_based_XGBoost.py" beforeDir="false" afterPath="$PROJECT_DIR$/Attention_based_XGBoost.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CNN_LSTM.py" beforeDir="false" afterPath="$PROJECT_DIR$/CNN_LSTM.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CNN_LSTM_XGBoost.py" beforeDir="false" afterPath="$PROJECT_DIR$/CNN_LSTM_XGBoost.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LSTM.py" beforeDir="false" afterPath="$PROJECT_DIR$/LSTM.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LSTM_Random_Forest.py" beforeDir="false" afterPath="$PROJECT_DIR$/LSTM_Random_Forest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LSTM_XGBoost.py" beforeDir="false" afterPath="$PROJECT_DIR$/LSTM_XGBoost.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Transformer_based.py" beforeDir="false" afterPath="$PROJECT_DIR$/Transformer_based.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/feature_engineering.py" beforeDir="false" afterPath="$PROJECT_DIR$/feature_engineering.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,43 +58,52 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.ARIMA.executor": "Run",
-    "Python.Attention_LSTM.executor": "Run",
-    "Python.Attention_based_XGBoost.executor": "Run",
-    "Python.CNN_LSTM.executor": "Run",
-    "Python.CNN_LSTM_XGBoost.executor": "Run",
-    "Python.LSTM.executor": "Run",
-    "Python.LSTM_Random_Forest.executor": "Run",
-    "Python.LSTM_XGBoost.executor": "Run",
-    "Python.NWP_XGBoost.executor": "Run",
-    "Python.Preprocess_data.executor": "Run",
-    "Python.Preprocess_weather.executor": "Run",
-    "Python.Random_Forest.executor": "Run",
-    "Python.Transformer_based.executor": "Run",
-    "Python.Weather_plots.executor": "Run",
-    "Python.XGBoost.executor": "Run",
-    "Python.feature_engineering.executor": "Run",
-    "Python.merge_weather_energy.executor": "Run",
-    "Python.visualize_merged_data.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "master",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "reference.settingsdialog.IDE.editor.colors.VCS",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.ARIMA.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Attention_LSTM.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Attention_based_XGBoost.executor&quot;: &quot;Run&quot;,
+    &quot;Python.BiLSTM_Attention_XGBoost.executor&quot;: &quot;Run&quot;,
+    &quot;Python.BiLSTM_Dense_XGBoost.executor&quot;: &quot;Run&quot;,
+    &quot;Python.CNN_BiLSTM_Attention.executor&quot;: &quot;Run&quot;,
+    &quot;Python.CNN_GradientBoostingRegressor.executor&quot;: &quot;Run&quot;,
+    &quot;Python.CNN_LSTM.executor&quot;: &quot;Run&quot;,
+    &quot;Python.CNN_LSTM_XGBoost.executor&quot;: &quot;Run&quot;,
+    &quot;Python.CNN_Transformer_XGBoost.executor&quot;: &quot;Run&quot;,
+    &quot;Python.LSTM.executor&quot;: &quot;Run&quot;,
+    &quot;Python.LSTM_Random_Forest.executor&quot;: &quot;Run&quot;,
+    &quot;Python.LSTM_XGBoost.executor&quot;: &quot;Run&quot;,
+    &quot;Python.NWP_XGBoost.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Preprocess_data.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Preprocess_weather.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Random_Forest.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Temporal_Fusion_Transformer.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Transformer_based.executor&quot;: &quot;Run&quot;,
+    &quot;Python.WaveletTransform_LSTM_XGBoost.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Weather_plots.executor&quot;: &quot;Run&quot;,
+    &quot;Python.XGBoost.executor&quot;: &quot;Run&quot;,
+    &quot;Python.XGBoost_Random_Forest_LightGBM.executor&quot;: &quot;Run&quot;,
+    &quot;Python.feature_engineering.executor&quot;: &quot;Run&quot;,
+    &quot;Python.merge_weather_energy.executor&quot;: &quot;Run&quot;,
+    &quot;Python.test.executor&quot;: &quot;Run&quot;,
+    &quot;Python.visualize_merged_data.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.IDE.editor.colors.VCS&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
-      "Python"
+  &quot;keyToStringList&quot;: {
+    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
+      &quot;Python&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -115,7 +136,27 @@
       <workItem from="1748974340706" duration="5702000" />
       <workItem from="1749059956170" duration="1542000" />
       <workItem from="1749649670824" duration="4034000" />
-      <workItem from="1749767315734" duration="1963000" />
+      <workItem from="1749767315734" duration="2429000" />
+      <workItem from="1750067569466" duration="678000" />
+      <workItem from="1750193348972" duration="4712000" />
+      <workItem from="1750375410881" duration="2735000" />
+      <workItem from="1750412312617" duration="203000" />
+      <workItem from="1750807590168" duration="2335000" />
+      <workItem from="1750844088420" duration="1881000" />
+      <workItem from="1751065954122" duration="1337000" />
+      <workItem from="1751103533393" duration="1591000" />
+      <workItem from="1751186935281" duration="3505000" />
+      <workItem from="1751323011404" duration="2362000" />
+      <workItem from="1751362811464" duration="1663000" />
+      <workItem from="1751449553027" duration="726000" />
+      <workItem from="1751495163340" duration="5150000" />
+      <workItem from="1751536220187" duration="7942000" />
+      <workItem from="1751881171261" duration="792000" />
+      <workItem from="1751966037210" duration="2582000" />
+      <workItem from="1751968651047" duration="22000" />
+      <workItem from="1752054046927" duration="942000" />
+      <workItem from="1752143724818" duration="2173000" />
+      <workItem from="1753172054378" duration="2866000" />
     </task>
     <task id="LOCAL-00001" summary="first_plots">
       <option name="closed" value="true" />
@@ -165,7 +206,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748980421831</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="my models">
+      <option name="closed" value="true" />
+      <created>1749769696335</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1749769696335</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -189,26 +238,36 @@
     <MESSAGE value="XGBoost, Random Forest" />
     <MESSAGE value="last hybrid models" />
     <MESSAGE value="finished with models" />
-    <option name="LAST_COMMIT_MESSAGE" value="finished with models" />
+    <MESSAGE value="my models" />
+    <option name="LAST_COMMIT_MESSAGE" value="my models" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Karvounis_Thesis$Transformer_based.coverage" NAME="Transformer_based Coverage Results" MODIFIED="1749768381083" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Karvounis_Thesis$Attention_based_XGBoost.coverage" NAME="Attention_based_XGBoost Coverage Results" MODIFIED="1749655861106" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Karvounis_Thesis$XGBoost_Random_Forest_LightGBM.coverage" NAME="XGBoost_Random_Forest_LightGBM Coverage Results" MODIFIED="1753174352621" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Karvounis_Thesis$Preprocess_data.coverage" NAME="Preprocess_data Coverage Results" MODIFIED="1748372214307" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Karvounis_Thesis$LSTM_XGBoost.coverage" NAME="LSTM_XGBoost Coverage Results" MODIFIED="1748623779739" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Karvounis_Thesis$LSTM_XGBoost.coverage" NAME="LSTM_XGBoost Coverage Results" MODIFIED="1751546879637" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Karvounis_Thesis$visualize_merged_data.coverage" NAME="visualize_merged_data Coverage Results" MODIFIED="1748376167699" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Karvounis_Thesis$ARIMA.coverage" NAME="ARIMA Coverage Results" MODIFIED="1748976474470" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Karvounis_Thesis$Random_Forest.coverage" NAME="Random_Forest Coverage Results" MODIFIED="1748458190352" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Karvounis_Thesis$Attention_LSTM.coverage" NAME="Attention_LSTM Coverage Results" MODIFIED="1749769268077" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Karvounis_Thesis$CNN_LSTM_XGBoost.coverage" NAME="CNN_LSTM_XGBoost Coverage Results" MODIFIED="1748622875199" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Karvounis_Thesis$feature_engineering.coverage" NAME="feature_engineering Coverage Results" MODIFIED="1748448296559" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Karvounis_Thesis$Random_Forest.coverage" NAME="Random_Forest Coverage Results" MODIFIED="1752147241075" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Karvounis_Thesis$Attention_LSTM.coverage" NAME="Attention_LSTM Coverage Results" MODIFIED="1753172848029" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Karvounis_Thesis$CNN_LSTM_XGBoost.coverage" NAME="CNN_LSTM_XGBoost Coverage Results" MODIFIED="1751968605046" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Karvounis_Thesis$merge_weather_energy.coverage" NAME="merge_weather_energy Coverage Results" MODIFIED="1748376159959" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Karvounis_Thesis$LSTM_Random_Forest.coverage" NAME="LSTM_Random_Forest Coverage Results" MODIFIED="1748623582943" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Karvounis_Thesis$CNN_LSTM.coverage" NAME="CNN_LSTM Coverage Results" MODIFIED="1748457298599" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Karvounis_Thesis$NWP_XGBoost.coverage" NAME="NWP_XGBoost Coverage Results" MODIFIED="1748975762552" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Karvounis_Thesis$LSTM.coverage" NAME="LSTM Coverage Results" MODIFIED="1748455424885" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Karvounis_Thesis$XGBoost.coverage" NAME="XGBoost Coverage Results" MODIFIED="1748975640711" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Karvounis_Thesis$CNN_Transformer_XGBoost.coverage" NAME="CNN_Transformer_XGBoost Coverage Results" MODIFIED="1753173065824" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Karvounis_Thesis$Temporal_Fusion_Transformer.coverage" NAME="Temporal_Fusion_Transformer Coverage Results" MODIFIED="1750376676841" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Karvounis_Thesis$Weather_plots.coverage" NAME="Weather_plots Coverage Results" MODIFIED="1748118383836" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Karvounis_Thesis$Preprocess_weather.coverage" NAME="Preprocess_weather Coverage Results" MODIFIED="1748372233437" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Karvounis_Thesis$CNN_GradientBoostingRegressor.coverage" NAME="CNN_GradientBoostingRegressor Coverage Results" MODIFIED="1753172940581" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Karvounis_Thesis$Transformer_based.coverage" NAME="Transformer_based Coverage Results" MODIFIED="1753173947273" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Karvounis_Thesis$BiLSTM_Dense_XGBoost.coverage" NAME="BiLSTM_Dense_XGBoost Coverage Results" MODIFIED="1750377111848" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Karvounis_Thesis$Attention_based_XGBoost.coverage" NAME="Attention_based_XGBoost Coverage Results" MODIFIED="1751968022077" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Karvounis_Thesis$CNN_BiLSTM_Attention.coverage" NAME="CNN_BiLSTM_Attention Coverage Results" MODIFIED="1751968186850" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Karvounis_Thesis$test.coverage" NAME="test Coverage Results" MODIFIED="1751966414276" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Karvounis_Thesis$WaveletTransform_LSTM_XGBoost.coverage" NAME="WaveletTransform_LSTM_XGBoost Coverage Results" MODIFIED="1753174078744" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Karvounis_Thesis$feature_engineering.coverage" NAME="feature_engineering Coverage Results" MODIFIED="1751538639805" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Karvounis_Thesis$LSTM_Random_Forest.coverage" NAME="LSTM_Random_Forest Coverage Results" MODIFIED="1753173635088" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Karvounis_Thesis$BiLSTM_Attention_XGBoost.coverage" NAME="BiLSTM_Attention_XGBoost Coverage Results" MODIFIED="1751103994593" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Karvounis_Thesis$CNN_LSTM.coverage" NAME="CNN_LSTM Coverage Results" MODIFIED="1751968426677" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Karvounis_Thesis$NWP_XGBoost.coverage" NAME="NWP_XGBoost Coverage Results" MODIFIED="1753173707646" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Karvounis_Thesis$LSTM.coverage" NAME="LSTM Coverage Results" MODIFIED="1751545974852" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Karvounis_Thesis$XGBoost.coverage" NAME="XGBoost Coverage Results" MODIFIED="1752144254187" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

@@ -26,9 +26,9 @@ for lag in [1, 2, 3, 24]:
     df_feat[f'generation_lag_{lag}h'] = df_feat['generation'].shift(lag)
 
 # --- Rolling averages ---
-df_feat['generation_roll_mean_3h'] = df_feat['generation'].rolling(window=3).mean()
+df_feat['generation_roll_mean_3h'] = df_feat['generation'].shift(1).rolling(window=3).mean()
 if 'tempm' in df_feat.columns:
-    df_feat['tempm_roll_mean_3h'] = df_feat['tempm'].rolling(window=3).mean()
+    df_feat['tempm_roll_mean_3h'] = df_feat['tempm'].shift(1).rolling(window=3).mean()
 
 # --- Αφαίρεση NaNs που δημιουργήθηκαν από shift/rolling ---
 df_feat_clean = df_feat.dropna()
